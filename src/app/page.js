@@ -1,21 +1,31 @@
 import Link from "next/link";
-import { useEffect } from 'react';
+import VisitorTracker from '../components/VisitorTracker';
 
-useEffect(() => {
-  const trackVisitor = async () => {
-    try {
-      await fetch('/api/tracker', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } catch (error) {
-    }
-  };
-
-  trackVisitor();
-}, []);
+export default function Home() {
+  return (
+    <>
+      <VisitorTracker />
+      {
+        <div>
+          <h1>OTP Generator</h1>
+          <p>Generate secure OTP codes</p>
+        </div>
+      }
+      <div>
+        {
+          <ul>
+            <li>
+              <Link href="/generator">OTP Generator</Link>
+            </li>
+            <li>
+              <Link href="/receiver">OTP Receiver</Link>
+            </li>
+          </ul>
+        }
+      </div>
+    </>
+  );
+}
 
 
 export default function Home() {
