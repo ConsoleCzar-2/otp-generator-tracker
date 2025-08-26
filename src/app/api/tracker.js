@@ -1,8 +1,8 @@
-export async function handler(req, res) {
+export async function POST(request) {
   const ip =
-    req.headers["x-forwarded-for"]?.split(",")[0] ||
-    req.headers["x-real-ip"] ||
-    req.socket.remoteAddress;
+    request.headers.get("x-forwarded-for")?.split(",")[0] ||
+    request.headers.get("x-real-ip") ||
+    undefined;
 
   console.log("VisitorTracker API called. IP:", ip);
 
@@ -23,5 +23,8 @@ export async function handler(req, res) {
   const responseBody = await response.text();
   console.log("Supabase response body:", responseBody);
 
-  res.status(200).json({ message: "IP stored", ip });
+  return new Response(JSON.stringify({ message: "IP stored", ip }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }
