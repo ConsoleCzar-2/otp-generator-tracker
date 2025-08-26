@@ -7,7 +7,7 @@ export async function POST(request) {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  const response = await fetch(`${supabaseUrl}/rest/v1/ip_logs`, {
+  await fetch(`${supabaseUrl}/rest/v1/ip_logs`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,10 +17,11 @@ export async function POST(request) {
     body: JSON.stringify({ ip_address: ip }),
   });
 
-  const result = await response.json();
-  
-  return new Response(JSON.stringify(result), {
-    status: response.status,
-    headers: { "Content-Type": "application/json" },
-  });
+  return new Response(
+    JSON.stringify({ message: "IP stored", ip }),
+    {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 }
