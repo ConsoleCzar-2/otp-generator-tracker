@@ -4,7 +4,7 @@ import VisitorTracker from './components/VisitorTracker';
 export default function Home() {
   return (
     <>
-      <VisitorTracker />
+      <VisitorTracker className="block" />
       {
         <div>
           <h1 className="otp fade-in">OTP System</h1>
