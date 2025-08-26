@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+export async function handler(req, res) {
   const ip =
     req.headers["x-forwarded-for"]?.split(",")[0] ||
     req.headers["x-real-ip"] ||
