@@ -1,5 +1,5 @@
 import Link from "next/link";
-import VisitorTracker from '../components/VisitorTracker';
+import VisitorTracker from '../../components/VisitorTracker'; 
 
 export default function Home() {
   return (
