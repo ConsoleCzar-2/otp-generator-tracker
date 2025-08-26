@@ -6,7 +6,7 @@ export default function VisitorTracker() {
   useEffect(() => {
     const trackVisitor = async () => {
       try {
-        await fetch('/api/tracker/route', {
+        await fetch('/api/tracker', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
