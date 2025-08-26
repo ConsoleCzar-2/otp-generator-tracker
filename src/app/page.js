@@ -1,17 +1,21 @@
 import Link from "next/link";
+import { useEffect } from 'react';
 
-import VisitorTracker from '../components/VisitorTracker';
+useEffect(() => {
+  const trackVisitor = async () => {
+    try {
+      await fetch('/api/tracker', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+    }
+  };
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <VisitorTracker />
-      <Component {...pageProps} />
-    </>
-  );
-}
-
-export default MyApp;
+  trackVisitor();
+}, []);
 
 
 export default function Home() {
