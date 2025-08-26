@@ -17,8 +17,10 @@ export async function POST(request) {
     body: JSON.stringify({ ip_address: ip }),
   });
 
-  return new Response(JSON.stringify({ message: "IP stored", ip }), {
-    status: 200,
+  const result = await response.json();
+  
+  return new Response(JSON.stringify(result), {
+    status: response.status,
     headers: { "Content-Type": "application/json" },
   });
 }
